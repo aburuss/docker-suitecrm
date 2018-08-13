@@ -63,5 +63,9 @@ EXPOSE 80 443
 
 CMD /usr/sbin/apache2ctl -D FOREGROUND
 
-#docker build -f Dockerfile -t a_crm_web .
-#
+# установка:
+# docker build -f Dockerfile -t a_crm_web .
+
+# запуск контейнера:
+# docker run -itd --restart=always --name=crm_web -p 3080:80 -p 3443:443 a_crm_web
+

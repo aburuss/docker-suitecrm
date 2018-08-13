@@ -18,6 +18,12 @@ EXPOSE 3306
 
 CMD /usr/bin/mysqld_safe
 
+# установка:
+# docker build -f Dockerfile -t a_crm_db .
+
+# запуск контейнера:
+# docker run -itd --restart=always --name=crm_db -p 3336:3306 a_crm_db
+
 # зайти в контейнер и запустить:
 # mysql -h localhost -e "use mysql; update user set plugin='' where user='root'; flush privileges;"
 # mysql_secure_installation
