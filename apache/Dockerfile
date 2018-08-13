@@ -34,7 +34,7 @@ COPY cfg/index.html /var/www/html/
 RUN mkdir -p /usr/local/apache2/conf
 COPY cfg/server.* /usr/local/apache2/conf/
 RUN chmod 0600 /usr/local/apache2/conf/server.key
-#RUN rm /var/www/html/index.html 
+RUN chown www-data:www-data /var/www/html 
 
 # установка Suite CRM
 #https://suitecrm.com/files/160/SuiteCRM-7.10.7/297/SuiteCRM-7.10.7.zip
@@ -64,8 +64,8 @@ EXPOSE 80 443
 CMD /usr/sbin/apache2ctl -D FOREGROUND
 
 # установка:
-# docker build -f Dockerfile -t a_crm_web .
+# docker build -f Dockerfile -t s01_crm_web .
 
 # запуск контейнера:
-# docker run -itd --restart=always --name=crm_web -p 3080:80 -p 3443:443 a_crm_web
+# docker run -itd --restart=always --name=a_crm_web -p 3080:80 -p 3443:443 s01_crm_web
 
