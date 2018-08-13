@@ -18,10 +18,10 @@ EXPOSE 3306
 
 CMD /usr/bin/mysqld_safe
 
-
+# зайти в контейнер и запустить:
 # mysql -h localhost -e "use mysql; update user set plugin='' where user='root'; flush privileges;"
 # mysql_secure_installation
-# mysql –u root -p
-# grant all privileges on mycrm_db.* to 'crm_user'@'localhost' identified by 'PASSWORD';
+# mysql -uroot -p
+# grant all privileges on mycrm_db.* to 'crm_user'@'%' identified by 'PASSWORD';
 # flush privileges;
 
