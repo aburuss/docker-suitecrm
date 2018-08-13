@@ -10,8 +10,18 @@ RUN apt-get install -y --no-install-recommends apt-utils
 RUN echo "debconf debconf/frontend select noninteractive" | debconf-set-selections
 RUN apt-get install -qy net-tools vim mariadb-server mariadb-client
 
+COPY --chown=root:root cfg/50-server.cnf /etc/mysql/mariadb.conf.d/
+
 VOLUME /var/lib/mysql
 
 EXPOSE 3306 
 
 CMD /usr/bin/mysqld_safe
+
+
+# mysql -h localhost -e "use mysql; update user set plugin='' where user='root'; flush privileges;"
+# mysql_secure_installation
+# mysql –u root -p
+# grant all privileges on mycrm_db.* to 'crm_user'@'localhost' identified by 'PASSWORD';
+# flush privileges;
+

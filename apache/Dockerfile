@@ -63,4 +63,5 @@ EXPOSE 80 443
 
 CMD /usr/sbin/apache2ctl -D FOREGROUND
 
-
+#docker build -f Dockerfile -t a_crm_web .
+#
