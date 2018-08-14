@@ -17,7 +17,7 @@ ENV SUITE_CRM_VERSION 7.10.7
 RUN apt-get clean && apt-get update && apt-get install -y --no-install-recommends apt-utils
 RUN echo "debconf debconf/frontend select noninteractive" | debconf-set-selections
 RUN apt-get update \
-	&& apt-get install -qy --no-install-recommends net-tools vim php7.0-mysql mariadb-client apache2 libapache2-mod-php7.0 php7.0 php7.0-gd php7.0-opcache php7.0-mbstring php7.0-xml php7.0-json php7.0-zip php7.0-curl php7.0-imap \ 
+	&& apt-get install -qy --no-install-recommends net-tools vim php7.0-mysql mariadb-client apache2 libapache2-mod-php7.0 php7.0 php7.0-gd php7.0-opcache php7.0-mbstring php7.0-xml php7.0-json php7.0-zip php7.0-curl php7.0-imap ca-certificates ssl-sert\ 
 	&& rm -r /var/lib/apt/lists/*
 
 # настройка apache
@@ -69,3 +69,4 @@ CMD /usr/sbin/apache2ctl -D FOREGROUND
 # запуск контейнера:
 # docker run -itd --restart=always --name=a_crm_web -p 3080:80 -p 3443:443 s01_crm_web
 
+# зайти по ссылке http://ip-address:3080 и установить suiteCRM, для mysql указать адрес и порт контейнера a_crm_db через двоеточие
